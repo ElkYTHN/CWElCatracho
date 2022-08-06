@@ -31,10 +31,6 @@ public class RestApi {
 
 
 
-
-
-
-
     public static String EndPointBuscarUsuario;
 
     public static  String correo = "";

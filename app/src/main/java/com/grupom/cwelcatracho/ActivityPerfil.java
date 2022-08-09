@@ -64,7 +64,7 @@ public class ActivityPerfil extends AppCompatActivity {
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //editar();
+                editar();
                 finish();
             }
         });
@@ -125,21 +125,17 @@ public class ActivityPerfil extends AppCompatActivity {
         queue.add(jsonObjectRequest);
     }
 
-/*    private void editar() {
-        Intent intent = new Intent(getApplicationContext(),Activity_Actualizar_Perfil.class);
-        intent.putExtra("email", email);
-        intent.putExtra("nombres", usuario.getNombres()+"");
-        intent.putExtra("apellidos", usuario.getApellidos()+"");
-        intent.putExtra("fechanac", usuario.getFechaNac()+"");
-        intent.putExtra("codigo_pais", usuario.getCodigo_pais()+"");
+    private void editar() {
+        Intent intent = new Intent(getApplicationContext(),ActivityEditarPerfil.class);
+        intent.putExtra("correo", email);
+        intent.putExtra("nombres", usuario.getNombre()+"");
+        intent.putExtra("apellidos", usuario.getApellido()+"");
+        intent.putExtra("pais", usuario.getTelefono()+"");
         intent.putExtra("telefono", usuario.getTelefono()+"");
-        intent.putExtra("peso", usuario.getPeso()+"");
-        intent.putExtra("altura", usuario.getAltura()+"");
         intent.putExtra("foto", usuario.getFoto()+"").toString();
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
         startActivity(intent);
         finish();
-    }*/
+    }
 
 
 

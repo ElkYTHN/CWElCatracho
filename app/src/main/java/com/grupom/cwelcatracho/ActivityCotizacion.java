@@ -124,22 +124,22 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
         http = new AsyncHttpClient();
         rq = Volley.newRequestQueue(getApplicationContext());
 
-        SharedPreferences mSharedPrefs = getSharedPreferences("credencialesPublicas",Context.MODE_PRIVATE);
+/*        SharedPreferences mSharedPrefs = getSharedPreferences("credencialesPublicas",Context.MODE_PRIVATE);
         String UIDV = mSharedPrefs.getString("idusuario","");
-        ObtenerUsuario(UIDV);
+        ObtenerUsuario(UIDV);*/
 
         //GUARDAR DATOS
         btnguardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String Vehiculo = txtidvehiculo.getText().toString();
+                //String Vehiculo = txtidvehiculo.getText().toString();
                 //String Servicio = txtidservicio.getText().toString();
                 //String Ubicacion = txtubicacion.getText().toString();
                 //String Fecha= txtfecha.getText().toString()+" "+txthora.getText().toString()+":00";
                 SharedPreferences mSharedPrefs = getSharedPreferences("credencialesPublicas", Context.MODE_PRIVATE);
                 String idusuario = mSharedPrefs.getString("idusuario","");
-                guardarCotizacion(idusuario, Vehiculo);
+                guardarCotizacion(idusuario);
             }
         });
 
@@ -148,6 +148,9 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
         Handler handler = new Handler();
         Runnable runnable = new Runnable(){
             public void run() {
+                SharedPreferences mSharedPrefs = getSharedPreferences("credencialesPublicas",Context.MODE_PRIVATE);
+                String UIDV = mSharedPrefs.getString("idusuario","");
+                ObtenerVehiculos(UIDV);
                 //ObtenerVehiculos();     // Funcion para cargar Vehiculos en Spinner
                 //ObtenerServicios();     // Funcion para cargar Servicios en Spinner
             }
@@ -274,18 +277,11 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
 
     }
 
-            //OBTENER USUARIO
-            private void ObtenerUsuario(String userv) {
-
-                String UIDV = userv;
-            }
-
-
             // OBTENER VEHICULOS DEL USUARIO ACTUAL
 
             public void ObtenerVehiculos(String userv) {
 
-                http.get("https://educationsofthn.com/API/listaidvehiculo.php?id_usuario='"+userv+"'", new AsyncHttpResponseHandler() {
+                http.get("https://educationsofthn.com/API/obtenerVehiculosid.php?id_usuario='"+userv+"'", new AsyncHttpResponseHandler() {
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -307,11 +303,13 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
             private void ListaVehiculos(String URL){
                 lista = new ArrayList<Spinners>();
                 try {
-                    JSONArray jsonArreglo = new JSONArray(URL);
-                    for(int i=0; i<jsonArreglo.length(); i++){
-                        Spinners m = new Spinners();
-                        m.setNombre(jsonArreglo.getJSONObject(i).getString("marca"));
-                        lista.add(m);
+                    JSONObject jsonRespuesta = new JSONObject(URL);
+                    JSONArray jsonArreglo = jsonRespuesta.getJSONArray("vehiculo");
+                    for(int i = 0; i < jsonArreglo.length(); i++){
+                        Spinners b = new Spinners();
+                        b.setId(jsonArreglo.getJSONObject(i).getInt("id"));
+                        b.setNombre(jsonArreglo.getJSONObject(i).getString("marcamodelo"));
+                        lista.add(b);
                     }
 
                     adp = new ArrayAdapter(ActivityCotizacion.this, android.R.layout.simple_spinner_dropdown_item, lista);
@@ -321,6 +319,7 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             ItemVehiculo = (String) sp_vehiculos.getAdapter().getItem(position).toString();
+
                         }
 
                         @Override
@@ -328,7 +327,6 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
 
                         }
                     });
-
                 }
                 catch (Exception e1){
                     e1.printStackTrace();
@@ -342,7 +340,7 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
                     JSONArray jsonArreglo = new JSONArray(URL);
                     for(int i=0; i<jsonArreglo.length(); i++){
                         iddevehiculo[i] = jsonArreglo.getJSONObject(i).getString("id");
-                        vehiculo = jsonArreglo.getJSONObject(i).getString("marca");
+                        vehiculo = jsonArreglo.getJSONObject(i).getString("marcamodelo");
                         System.out.println("VEHICULO: "+vehiculo);
                     }
                 }
@@ -394,7 +392,6 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     ItemServicios = (String) sp_servicios.getAdapter().getItem(position).toString();
-                  //ItemServicios = (String) sp_servicios.getAdapter().getItem(position);
 
                 }
 
@@ -460,14 +457,14 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
     }
 
 
-    private void guardarCotizacion(String idUsuario, String VehiculoC) {
+    private void guardarCotizacion(String idUsuario) {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         HashMap<String, String> parametros = new HashMap<>();
         String Fecha= txtfecha.getText().toString()+" "+txthora.getText().toString()+":00";
 
         parametros.put("id_usuario", idUsuario);
-        parametros.put("id_vehiculo", VehiculoC);
+        parametros.put("id_vehiculo", ItemVehiculo);
         parametros.put("ubicacion", ItemUbicacion);
         parametros.put("fecha", Fecha);
         parametros.put("tipo_servicio", ItemServicios);

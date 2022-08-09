@@ -53,10 +53,10 @@ public class ActivityRegistrar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
 
-        Foto = (ImageView) findViewById(R.id.imageView);
-        btnSave = (Button) findViewById(R.id.btnActualizar);
-        btnTomarfoto = (FloatingActionButton) findViewById(R.id.fbtnTomarFoto);
-        btnGaleria = (Button) findViewById(R.id.btnGaleria);
+        Foto = (ImageView) findViewById(R.id.actuimageView);
+        btnSave = (Button) findViewById(R.id.actubtnActualizar);
+        btnTomarfoto = (FloatingActionButton) findViewById(R.id.actuTomarFoto);
+        btnGaleria = (Button) findViewById(R.id.actubtnGaleria);
         txtNombre = (EditText) findViewById(R.id.actutxtnombre);
         txtTelefono = (EditText) findViewById(R.id.actutxtTelefono);
         txtApellido = (EditText) findViewById(R.id.actutxtapellido);

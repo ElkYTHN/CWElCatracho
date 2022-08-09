@@ -492,7 +492,6 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
     private void limpiar(){
         txtfecha.setText("");
         txthora.setText("");
-        txtidvehiculo.setText("");
 
     }
 

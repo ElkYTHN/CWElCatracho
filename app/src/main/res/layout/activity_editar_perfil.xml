@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/actuimageView"
         android:layout_width="144dp"
         android:layout_height="140dp"
         android:layout_marginTop="4dp"
@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/picture_2008484_960_720" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fbtnTomarFoto"
+        android:id="@+id/actuTomarFoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
@@ -27,7 +27,7 @@
         android:clickable="true"
         android:src="@android:drawable/ic_menu_camera"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        app:layout_constraintTop_toBottomOf="@id/actuimageView" />
 
     <TextView
         android:id="@+id/textView"
@@ -40,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fbtnTomarFoto" />
+        app:layout_constraintTop_toBottomOf="@+id/actuTomarFoto" />
 
     <EditText
         android:id="@+id/actutxtnombre"
@@ -134,7 +134,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/btnActualizar"
+        android:id="@+id/actubtnActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Actualizar"
@@ -145,14 +145,14 @@
         app:layout_constraintVertical_bias="0.255" />
 
     <Button
-        android:id="@+id/btnGaleria"
+        android:id="@+id/actubtnGaleria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Galeria"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.565"
-        app:layout_constraintStart_toEndOf="@+id/fbtnTomarFoto"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toEndOf="@+id/actuTomarFoto"
+        app:layout_constraintTop_toBottomOf="@+id/actuimageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

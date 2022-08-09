@@ -26,7 +26,7 @@ public class RestApi {
     public static final String EndPointCreateVehiculo = StringHttp + ipaddress + CreateVehiculo;
     public static final String EndPointObtenerVehiculo = StringHttp + ipaddress + ObtenerVehiculo;
     public static final String EndPointObtenerServicios = StringHttp + ipaddress + ObtenerVehiculos;
-
+    public static final String EndPointSetUpdateUser= StringHttp + ipaddress + setUpdate;
 
     public static final String EndPointValidarLogin = StringHttp + ipaddress + GetLogin;
     public static final String EndPointBuscarCorreo = StringHttp + ipaddress + getBuscarCorreo;

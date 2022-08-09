@@ -89,7 +89,8 @@ public class ActivityPerfil extends AppCompatActivity {
                     for (int i=0; i<usuarioArray.length(); i++)
                     {
                         JSONObject RowUsuario = usuarioArray.getJSONObject(i);
-                        usuario = new Usuario(  RowUsuario.getInt("id_usuario"),
+                        usuario = new Usuario(
+                                RowUsuario.getInt("id_usuario"),
                                 RowUsuario.getString("nombre"),
                                 RowUsuario.getString("apellido"),
                                 RowUsuario.getString("pais"),

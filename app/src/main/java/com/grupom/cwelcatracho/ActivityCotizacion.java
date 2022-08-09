@@ -5,7 +5,6 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -62,12 +61,16 @@ import cz.msebera.android.httpclient.Header;
 
 public class ActivityCotizacion extends AppCompatActivity implements View.OnClickListener{
 
+    private String UIDV;
     Button btnhora, btnfecha, btnguardar;
     EditText txtidvehiculo, txtidservicio, txthora, txtfecha, txtubicacion;
 
     private AsyncHttpClient http;
     private RequestQueue rq;
 
+    //VEHICULOS
+    private String[] iddevehiculo= new String[900]; //IDVEHICULO de la posicion
+    private String IdVehiculoBD,vehiculo; // ID del Vehiculo tabla CREARVEHICULO
 
     //SPINNERS
     Spinner sp_vehiculos,sp_servicios,sp_ubicacion;
@@ -83,6 +86,9 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
     private boolean isFirstTime = true;
     boolean retorno;
     TextView textViewUbicacion;
+    private String[] contenidoservicio;
+    private int seleccionarservicio;
+    int seleccionarV;
 
     //HORA Y FECHA
     private int dia, mes, anio, hora, minutos;
@@ -108,6 +114,7 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
 
         sp_ubicacion = (Spinner) findViewById(R.id.spUbicacion);
         sp_servicios = (Spinner) findViewById(R.id.spServicios);
+        sp_vehiculos = (Spinner) findViewById(R.id.spVehiculo);
 
 
         //0BTENER FECHA Y HORA
@@ -115,7 +122,11 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
         btnhora.setOnClickListener(this);
 
         http = new AsyncHttpClient();
-        rq = Volley.newRequestQueue(this);
+        rq = Volley.newRequestQueue(getApplicationContext());
+
+        SharedPreferences mSharedPrefs = getSharedPreferences("credencialesPublicas",Context.MODE_PRIVATE);
+        String UIDV = mSharedPrefs.getString("idusuario","");
+        ObtenerUsuario(UIDV);
 
         //GUARDAR DATOS
         btnguardar.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +149,7 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
         Runnable runnable = new Runnable(){
             public void run() {
                 //ObtenerVehiculos();     // Funcion para cargar Vehiculos en Spinner
-                ObtenerServicios();     // Funcion para cargar Servicios en Spinner
+                //ObtenerServicios();     // Funcion para cargar Servicios en Spinner
             }
         };
 
@@ -147,7 +158,7 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
 
 
         // ESCOGER UBICACION EN EL SPINNER
-        contenido = new String[]{"Seleccione","Centro de Servicio", "A Domicilio"};
+        contenido = new String[]{"UBICACION","Centro de Servicio", "A Domicilio"};
         ArrayList<String> ubicacion = new ArrayList<>(Arrays.asList(contenido));
         adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, ubicacion);
         sp_ubicacion.setAdapter(adapter2);
@@ -193,7 +204,7 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
                 String CA = "Cambio de Aceite";
 
                 if (ItemServicios.equals(CA)) {
-                    AlertDialog.Builder alerta = new AlertDialog.Builder(getBaseContext());
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(ActivityCotizacion.this);
                     alerta.setMessage("Unicamente se hace en centro de servicio")
                             .setCancelable(false)
                             .setNegativeButton("Ok", new DialogInterface.OnClickListener() {
@@ -221,11 +232,129 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
             }
         });
 
+        // ESCOGER SERVICIO
+        contenidoservicio = new String[]{
+                "SERVICIO",
+                "Lavado General",
+                "Lavado General - Solo por fuera",
+                "Cambio de Aceite",
+                "Lavado de Motor",
+                "Lavado Completo"};
+        ArrayList<String> servicio = new ArrayList<>(Arrays.asList(contenidoservicio));
+        adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, servicio);
+        sp_servicios.setAdapter(adapter2);
+        sp_servicios.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (isFirstTime){
+                    isFirstTime = true;
+                }
+                if (contenidoservicio[position] == "Lavado General") {
+                    seleccionarservicio = 0;
+                } else if (contenidoservicio[position] == "Lavado General - Solo por fuera") {
+                    seleccionarservicio = 1;
+                } else if (contenidoservicio[position] == "Cambio de Aceite") {
+                    seleccionarservicio = 2;
+                } else if (contenidoservicio[position] == "Lavado de Motor") {
+                    seleccionarservicio = 3;
+                } else if (contenidoservicio[position] == "Lavado Completo") {
+                    seleccionarservicio = 4;
+                }
+                ItemServicios = (String) sp_servicios.getAdapter().getItem(position).toString();   // El elemento seleccionado del Spinner
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
 
     }
 
+            //OBTENER USUARIO
+            private void ObtenerUsuario(String userv) {
+
+                String UIDV = userv;
+            }
+
+
+            // OBTENER VEHICULOS DEL USUARIO ACTUAL
+
+            public void ObtenerVehiculos(String userv) {
+
+                http.get("https://educationsofthn.com/API/listaidvehiculo.php?id_usuario='"+userv+"'", new AsyncHttpResponseHandler() {
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        System.out.println("ON SUCCESS");
+                        if(statusCode == 200){
+                            ListaVehiculos(new String (responseBody));
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        System.out.println("ERROR HTTP");
+                    }
+                });
+            }
+
+            // OBTENER LA LISTA DE VEHICULOS DE LA BD
+            private void ListaVehiculos(String URL){
+                lista = new ArrayList<Spinners>();
+                try {
+                    JSONArray jsonArreglo = new JSONArray(URL);
+                    for(int i=0; i<jsonArreglo.length(); i++){
+                        Spinners m = new Spinners();
+                        m.setNombre(jsonArreglo.getJSONObject(i).getString("marca"));
+                        lista.add(m);
+                    }
+
+                    adp = new ArrayAdapter(ActivityCotizacion.this, android.R.layout.simple_spinner_dropdown_item, lista);
+                    sp_vehiculos.setAdapter(adp);
+
+                    sp_vehiculos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            ItemVehiculo = (String) sp_vehiculos.getAdapter().getItem(position).toString();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+
+                }
+                catch (Exception e1){
+                    e1.printStackTrace();
+                }
+            }
+
+            // OBTENER EL ID DE LOS VEHICULOS EN UN ARREGLO PARA LA POSICION
+            private void ListarIDVehiculos(String URL){
+                try {
+
+                    JSONArray jsonArreglo = new JSONArray(URL);
+                    for(int i=0; i<jsonArreglo.length(); i++){
+                        iddevehiculo[i] = jsonArreglo.getJSONObject(i).getString("id");
+                        vehiculo = jsonArreglo.getJSONObject(i).getString("marca");
+                        System.out.println("VEHICULO: "+vehiculo);
+                    }
+                }
+                catch (Exception e1){
+                    e1.printStackTrace();
+                }
+            }
+
+
+
     // OBTENER SERVICIOS DE LA BD
-    public void ObtenerServicios() {
+    /*public void ObtenerServicios() {
         String URL = RestApi.EndPointObtenerServicios;    // URL de recurso PHP
 
         http.post(URL, new AsyncHttpResponseHandler() {
@@ -250,20 +379,23 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
         try {
             JSONObject jsonRespuesta = new JSONObject(URL);
             JSONArray jsonArreglo = jsonRespuesta.getJSONArray("servicio");
-            for(int i=0; i<jsonArreglo.length(); i++){
+            for(int i = 0; i < jsonArreglo.length(); i++){
                 Spinners a = new Spinners();
+                Spinners b = new Spinners();
                 a.setId(jsonArreglo.getJSONObject(i).getInt("id_servicio"));
-                a.setNombre(jsonArreglo.getJSONObject(i).getString("tipo_servicio"));
-                lista.add(a);
+                b.setNombre(jsonArreglo.getJSONObject(i).getString("tipo_servicio"));
+                lista.add(b);
             }
 
-            adp = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, lista);
+            adp = new ArrayAdapter(ActivityCotizacion.this, android.R.layout.simple_spinner_dropdown_item, lista);
             sp_servicios.setAdapter(adp);
 
             sp_servicios.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    ItemServicios = (String) sp_servicios.getAdapter().getItem(position).toString();   // El elemento seleccionado del Spinner
+                    ItemServicios = (String) sp_servicios.getAdapter().getItem(position).toString();
+                  //ItemServicios = (String) sp_servicios.getAdapter().getItem(position);
+
                 }
 
                 @Override
@@ -276,8 +408,10 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
                 e1.printStackTrace();
             }
         }
+*/
 
 
+        //Obtener hora y fecha
     @Override
     public void onClick(View v) {
 

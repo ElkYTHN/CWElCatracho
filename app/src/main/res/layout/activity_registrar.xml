@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fbtnTomarFoto" />
 
     <EditText
-        android:id="@+id/txtNombre"
+        android:id="@+id/actutxtnombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -66,10 +66,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/actutxtnombre" />
 
     <EditText
-        android:id="@+id/txtApellido"
+        android:id="@+id/actutxtapellido"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -92,10 +92,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtApellido" />
+        app:layout_constraintTop_toBottomOf="@+id/actutxtapellido" />
 
     <EditText
-        android:id="@+id/txtPais"
+        android:id="@+id/actutxtPais"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -117,10 +117,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPais" />
+        app:layout_constraintTop_toBottomOf="@+id/actutxtPais" />
 
     <EditText
-        android:id="@+id/txtTelefono"
+        android:id="@+id/actutxtTelefono"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -133,14 +133,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/btnGuardar"
+        android:id="@+id/btnActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="152dp"
         android:text="Registrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTelefono"
+        app:layout_constraintTop_toBottomOf="@+id/actutxtTelefono"
         app:layout_constraintVertical_bias="0.914" />
 
     <Button
@@ -160,7 +160,7 @@
         android:layout_height="21dp"
         android:layout_marginTop="45dp"
         android:text="Correo Electronico:"
-        app:layout_constraintTop_toTopOf="@+id/txtTelefono"
+        app:layout_constraintTop_toTopOf="@+id/actutxtTelefono"
         tools:layout_editor_absoluteX="8dp" />
 
     <EditText

@@ -17,6 +17,7 @@ public class RestApi {
     private static final String ObtenerVehiculo = "/API/listaidvehiculo.php";
     private static final String CreateCotizacion = "/API/crearcotizacion.php";
     private static final String ObtenerServicio = "/API/obtenerlistaServicios.php";
+    private static final String ObtenerVehiculos = "/API/obtenerlistaVehiculos.php";
 
     //METODOS USUARIOS
 
@@ -24,12 +25,12 @@ public class RestApi {
     public static final String EndPointCreateUsuario = StringHttp + ipaddress + CreateUsuario;
     public static final String EndPointCreateVehiculo = StringHttp + ipaddress + CreateVehiculo;
     public static final String EndPointObtenerVehiculo = StringHttp + ipaddress + ObtenerVehiculo;
-    public static final String EndPointObtenerServicios = StringHttp + ipaddress + ObtenerServicio;
+    public static final String EndPointObtenerServicios = StringHttp + ipaddress + ObtenerVehiculos;
 
 
     public static final String EndPointValidarLogin = StringHttp + ipaddress + GetLogin;
     public static final String EndPointBuscarCorreo = StringHttp + ipaddress + getBuscarCorreo;
-    //public static final String ApiPostServicios = "https://sitiosweb2021.000webhostapp.com/Carwash/buscar_servicios.php";
+    public static final String EndPointlistaVehiculos = "https://sitiosweb2021.000webhostapp.com/Carwash/buscar_servicios.php";
 
 
 

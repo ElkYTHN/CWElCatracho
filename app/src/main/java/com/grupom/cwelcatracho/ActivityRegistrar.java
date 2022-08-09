@@ -54,13 +54,13 @@ public class ActivityRegistrar extends AppCompatActivity {
         setContentView(R.layout.activity_registrar);
 
         Foto = (ImageView) findViewById(R.id.imageView);
-        btnSave = (Button) findViewById(R.id.btnGuardar);
+        btnSave = (Button) findViewById(R.id.btnActualizar);
         btnTomarfoto = (FloatingActionButton) findViewById(R.id.fbtnTomarFoto);
         btnGaleria = (Button) findViewById(R.id.btnGaleria);
-        txtNombre = (EditText) findViewById(R.id.txtNombre);
-        txtTelefono = (EditText) findViewById(R.id.txtTelefono);
-        txtApellido = (EditText) findViewById(R.id.txtApellido);
-        txtPais = (EditText) findViewById(R.id.txtPais);
+        txtNombre = (EditText) findViewById(R.id.actutxtnombre);
+        txtTelefono = (EditText) findViewById(R.id.actutxtTelefono);
+        txtApellido = (EditText) findViewById(R.id.actutxtapellido);
+        txtPais = (EditText) findViewById(R.id.actutxtPais);
         txtCorreo = (EditText) findViewById(R.id.txtCorreo);
         txtPass = (EditText) findViewById(R.id.txtPass);
 

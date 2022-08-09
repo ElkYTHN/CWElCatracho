@@ -1,23 +1,23 @@
 package com.grupom.cwelcatracho.Spinner;
 
 public class Spinners {
-    private Integer id;
+    private int id;
     private String nombre;
 
     public Spinners() {
 
     }
 
-    public Spinners(Integer id, String nombre) {
+    public Spinners(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

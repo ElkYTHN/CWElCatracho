@@ -6,12 +6,12 @@ public class Usuario {
     public String nombre;
     public String apellido;
     public String pais;
-    public int telefono;
+    public String telefono;
     public String foto;
     public String correo;
     public String clave;
 
-    public Usuario(int id, String nombre, String apellido, String pais, int telefono, String foto, String correo, String clave) {
+    public Usuario(int id, String nombre, String apellido, String pais, String telefono, String foto, String correo, String clave) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -20,6 +20,16 @@ public class Usuario {
         this.foto = foto;
         this.correo = correo;
         this.clave = clave;
+    }
+
+    public Usuario(int id, String nombre, String apellido, String pais, String telefono, String foto, String correo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.pais = pais;
+        this.telefono = telefono;
+        this.foto = foto;
+        this.correo = correo;
     }
 
     public int getId() {
@@ -54,11 +64,11 @@ public class Usuario {
         this.pais = pais;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

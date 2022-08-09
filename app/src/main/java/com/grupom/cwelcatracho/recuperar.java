@@ -41,7 +41,7 @@ public class recuperar extends AppCompatActivity {
     String para, asunto, mensaje;//Para datos del mensaje
     String usuario=null, password=null, nombrecompleto=null;
     //Variable que contiene la URL
-    private static final String URL_CONTRASENIA = "http://transportweb2.online/API/recuperar_clave.php";
+    private static final String URL_CONTRASENIA = "http://educationsofthn.com/API/recuperar_clave.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -34,7 +34,6 @@ import cz.msebera.android.httpclient.Header;
 public class ActivityHistorialLavados extends AppCompatActivity {
 
     private AsyncHttpClient http;
-    private String uid,iduser;             // UID del Usuario en Firebase
     private int idUser;          // ID del Usuario en MySQL
     private String URLQuotation;      // URL de Lista Cotizacion Vehiculo
 

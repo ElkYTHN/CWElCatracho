@@ -150,7 +150,7 @@ public class ActivityLogin extends AppCompatActivity {
 
                         //Toast.makeText(getApplicationContext(), "Response " + mensaje, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(),ActivityHome.class);
-                        intent.putExtra("codigo_usuario", codigo);
+                        intent.putExtra("id_usuario", codigo);
                         startActivity(intent);
                         finish();
                     }else{

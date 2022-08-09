@@ -37,6 +37,7 @@ public class ActivityPerfil extends AppCompatActivity {
     EditText txtnombre, txtpais, txtapellido, txtcorreo, txttelefono;
     Button btnEditar;
     ImageView perfilfoto;
+
     Usuario usuario;
     ArrayList<String> arrayUsuario;
     String email;

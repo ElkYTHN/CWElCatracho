@@ -7,14 +7,16 @@ public class Cotizacion {
     public String ubicacion;
     public String fecha;
     public String tipo_servicio;
+    public String estado;
 
-    public Cotizacion(int id, int id_usuario, String vehiculo, String ubicacion, String fecha, String tipo_servicio) {
+    public Cotizacion(int id, int id_usuario, String vehiculo, String ubicacion, String fecha, String tipo_servicio, String estado) {
         this.id = id;
         this.id_usuario = id_usuario;
         this.vehiculo = vehiculo;
         this.ubicacion = ubicacion;
         this.fecha = fecha;
         this.tipo_servicio = tipo_servicio;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -63,6 +65,14 @@ public class Cotizacion {
 
     public void setTipo_servicio(String tipo_servicio) {
         this.tipo_servicio = tipo_servicio;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }
 

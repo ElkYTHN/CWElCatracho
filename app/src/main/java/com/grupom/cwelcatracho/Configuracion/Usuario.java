@@ -2,7 +2,7 @@ package com.grupom.cwelcatracho.Configuracion;
 
 public class Usuario {
 
-    public int id;
+    public int id_usuario;
     public String nombre;
     public String apellido;
     public String pais;
@@ -11,8 +11,8 @@ public class Usuario {
     public String correo;
     public String clave;
 
-    public Usuario(int id, String nombre, String apellido, String pais, String telefono, String foto, String correo, String clave) {
-        this.id = id;
+    public Usuario(int id_usuario, String nombre, String apellido, String pais, String telefono, String foto, String correo, String clave) {
+        this.id_usuario = id_usuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.pais = pais;
@@ -22,8 +22,8 @@ public class Usuario {
         this.clave = clave;
     }
 
-    public Usuario(int id, String nombre, String apellido, String pais, String telefono, String foto, String correo) {
-        this.id = id;
+    public Usuario(int id_usuario, String nombre, String apellido, String pais, String telefono, String foto, String correo) {
+        this.id_usuario = id_usuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.pais = pais;
@@ -32,12 +32,12 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public int getId() {
-        return id;
+    public int getId_usuario() {
+        return id_usuario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getNombre() {

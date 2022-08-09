@@ -2,17 +2,22 @@ package com.grupom.cwelcatracho;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -56,6 +61,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -468,16 +474,19 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
         parametros.put("ubicacion", ItemUbicacion);
         parametros.put("fecha", Fecha);
         parametros.put("tipo_servicio", ItemServicios);
+        parametros.put("estado", "Aprovado");
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RestApi.EndPointCreateCotizacion,
                 new JSONObject(parametros), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                try {
-                    Toast.makeText(getApplicationContext(), response.getString("mensaje"), Toast.LENGTH_SHORT).show();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+               // try {
+                    Toast.makeText(getApplicationContext(), "Operacion Exitosa", Toast.LENGTH_SHORT).show();
+                    createNotification();
+                    //Toast.makeText(getApplicationContext(), response.getString("mensaje"), Toast.LENGTH_SHORT).show();
+                /*} catch (JSONException e) {
+                    e.printStackTrace();*/
+                //}
             }
         }, new Response.ErrorListener() {
             @Override
@@ -575,5 +584,42 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
 
         }
     }
+
+    private void createNotification(){
+        String id="mensaje";
+        NotificationManager notificationManager = (NotificationManager)this.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,id);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel(id, "nuevo", NotificationManager.IMPORTANCE_HIGH);
+            notificationChannel.setShowBadge(true);
+            assert notificationManager != null;
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+        builder.setAutoCancel(true).setWhen(System.currentTimeMillis())
+                .setContentTitle("Cotización por Servicio del Carwash").setSmallIcon(R.mipmap.ic_launcher)
+                .setContentText("Su cotizacion fue aceptada con exito - Muchas Gracias por su Preferencia -.")
+                .setColor(Color.BLUE)
+                .setContentIntent(sendNotification())
+                .setContentInfo("nuevo");
+        Random random = new Random();
+        int id_notification = random.nextInt(8000);
+
+        assert notificationManager != null;
+        notificationManager.notify(id_notification,builder.build());
+    }
+
+    public PendingIntent sendNotification(){
+        Intent intent = new Intent(this.getApplicationContext(), ActivityHome.class);
+        intent.putExtra("color", "rojo");
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        return PendingIntent.getActivity(this,0,intent,0);
+    }
+
+/*    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }*/
 
 }

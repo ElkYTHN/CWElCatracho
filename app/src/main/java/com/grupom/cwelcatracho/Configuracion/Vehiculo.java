@@ -18,9 +18,17 @@ public class Vehiculo {
         this.anio = anio;
     }
 
+    public Vehiculo(int id_usuario, String marca, String modelo, String anio) {
+        this.id_usuario = id_usuario;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.anio = anio;
+    }
+
     public Vehiculo(){
 
     }
+
 
     public int getId() {
         return id;

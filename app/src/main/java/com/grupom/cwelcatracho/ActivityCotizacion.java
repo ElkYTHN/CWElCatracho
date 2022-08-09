@@ -106,7 +106,7 @@ public class ActivityCotizacion extends AppCompatActivity implements View.OnClic
         btnfecha = (Button) findViewById(R.id.btnFecha);
         btnhora = (Button) findViewById(R.id.btnHora);
 
-        txtidvehiculo = (EditText) findViewById(R.id.txtVehiculo);
+        //txtidvehiculo = (EditText) findViewById(R.id.txtVehiculo);
         //txtidservicio = (EditText) findViewById(R.id.txtTipoServicio);
         txthora = (EditText) findViewById(R.id.txtHora);
         txtfecha = (EditText) findViewById(R.id.txtFecha);

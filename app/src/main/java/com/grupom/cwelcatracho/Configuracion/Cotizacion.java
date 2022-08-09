@@ -9,9 +9,29 @@ public class Cotizacion {
     public String tipo_servicio;
     public String estado;
 
+    public Cotizacion(){
+
+    }
     public Cotizacion(int id, int id_usuario, String vehiculo, String ubicacion, String fecha, String tipo_servicio, String estado) {
         this.id = id;
         this.id_usuario = id_usuario;
+        this.vehiculo = vehiculo;
+        this.ubicacion = ubicacion;
+        this.fecha = fecha;
+        this.tipo_servicio = tipo_servicio;
+        this.estado = estado;
+    }
+
+    public Cotizacion(int id_usuario, String vehiculo, String ubicacion, String fecha, String tipo_servicio, String estado) {
+        this.id_usuario = id_usuario;
+        this.vehiculo = vehiculo;
+        this.ubicacion = ubicacion;
+        this.fecha = fecha;
+        this.tipo_servicio = tipo_servicio;
+        this.estado = estado;
+    }
+
+    public Cotizacion(String vehiculo, String ubicacion, String fecha, String tipo_servicio, String estado) {
         this.vehiculo = vehiculo;
         this.ubicacion = ubicacion;
         this.fecha = fecha;

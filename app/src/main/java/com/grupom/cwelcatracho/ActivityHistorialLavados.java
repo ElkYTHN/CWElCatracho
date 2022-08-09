@@ -4,23 +4,34 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.grupom.cwelcatracho.Configuracion.Cotizacion;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-public class ActivityHistorialAceite extends AppCompatActivity {
+public class ActivityHistorialLavados extends AppCompatActivity {
 
     private AsyncHttpClient http;
     private String uid,iduser;             // UID del Usuario en Firebase
@@ -35,8 +46,7 @@ public class ActivityHistorialAceite extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historial_aceite);
-
+        setContentView(R.layout.activity_historial_lavados);
         http = new AsyncHttpClient();
         items = new ArrayList<>();
 
@@ -69,7 +79,7 @@ public class ActivityHistorialAceite extends AppCompatActivity {
 
     // Obtener Cotizaciones de Usuario con MySQL
     public void ObtenerCotizacion(String userv) {
-        http.post("https://educationsofthn.com/API/obtenerCotizacionesId.php?id_usuario='"+userv+"'", new AsyncHttpResponseHandler() {
+        http.post("https://educationsofthn.com/API/obtenercotizacionid.php?id_usuario='"+userv+"'", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 if(statusCode == 200){

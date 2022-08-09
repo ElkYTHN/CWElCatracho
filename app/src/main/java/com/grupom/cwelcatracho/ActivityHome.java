@@ -74,7 +74,7 @@ public class ActivityHome extends AppCompatActivity {
         btnHistorialLabados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),ActivityHistorial.class);
+                Intent intent = new Intent(getApplicationContext(),ActivityHistorialLavados.class);
                 startActivity(intent);
             }
         });

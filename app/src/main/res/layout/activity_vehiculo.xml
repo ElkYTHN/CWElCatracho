@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,72 +7,94 @@
     tools:context=".ActivityVehiculo">
 
 
-    <EditText
-        android:id="@+id/txtMarca"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="102dp"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="98dp"
-        android:ems="10"
-        android:hint="Marca"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/txtModelo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="213dp"
-        android:ems="10"
-        android:hint="Modelo"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/txtAceite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="305dp"
-        android:layout_marginEnd="99dp"
-        android:ems="10"
-        android:hint="Tipo de Aceite"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/txtAnio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="98dp"
-        android:layout_marginTop="426dp"
-        android:layout_marginEnd="102dp"
-        android:ems="10"
-        android:hint="Anio del Vehiculo"
-        android:inputType="textPersonName" />
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="271dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="56dp"
+        android:text="Registro de Vehiculos"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnGuardarV"
         android:layout_width="194dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="109dp"
-        android:layout_marginTop="528dp"
-        android:layout_marginEnd="108dp"
-        android:background="@drawable/bordes_redondos"
-        android:text="Registrar Vehiculo" />
+        android:layout_marginTop="460dp"
+        android:background="@drawable/btn_negro"
+        android:text="Registrar Vehiculo"
+        android:textColor="@drawable/txt_btn_negro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/txtMarca"
+        android:layout_width="265dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="148dp"
+        android:backgroundTint="#000000"
+        android:ems="10"
+        android:hint="Marca"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.561"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtModelo"
+        android:layout_width="265dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="224dp"
+        android:backgroundTint="#000000"
+        android:ems="10"
+        android:hint="Modelo"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.561"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtAceite"
+        android:layout_width="266dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="296dp"
+        android:backgroundTint="#000000"
+        android:ems="10"
+        android:hint="Tipo de Aceite"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtAnio"
+        android:layout_width="261dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="376dp"
+        android:backgroundTint="#000000"
+        android:ems="10"
+        android:hint="Anio del Vehiculo"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

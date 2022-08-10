@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,85 +8,111 @@
 
     <ImageView
         android:id="@+id/fhImage"
-        android:layout_width="167dp"
-        android:layout_height="161dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="121dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="123dp"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <EditText
-        android:id="@+id/fhtxtnombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/fhImage"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="Nombre"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/fhtxtapellido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/fhtxtnombre"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="Apellido"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/fhtxtPais"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/fhtxtapellido"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="Pais"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/fgtelefono"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/fhtxtPais"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="Telefono"
-        android:inputType="textPersonName" />
+        android:layout_width="156dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/fhcorreo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/fgtelefono"
+        android:layout_width="289dp"
+        android:layout_height="49dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="420dp"
+        android:backgroundTint="#000000"
         android:ems="10"
         android:enabled="false"
         android:hint="Correo"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fhtxtnombre"
+        android:layout_width="289dp"
+        android:layout_height="49dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="184dp"
+        android:backgroundTint="#000000"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Nombre"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fhtxtapellido"
+        android:layout_width="289dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="244dp"
+        android:backgroundTint="#000000"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Apellido"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fhtxtPais"
+        android:layout_width="289dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="300dp"
+        android:backgroundTint="#000000"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Pais"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fgtelefono"
+        android:layout_width="289dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="360dp"
+        android:backgroundTint="#000000"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Telefono"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/perfilbtnActualizar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/fhcorreo"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
-        android:layout_marginBottom="47dp"
-        android:text="Actualizar" />
-</RelativeLayout>
+        android:layout_width="186dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="500dp"
+        android:background="@drawable/btn_negro"
+        android:text="Actualizar"
+        android:textColor="@drawable/txt_btn_negro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -75,7 +75,7 @@ public class ActivityVerVehiculo extends AppCompatActivity {
         setContentView(R.layout.activity_ver_vehiculo);
 
         Lista = (ListView) findViewById(R.id.lista);
-        btnEliminar = (Button) findViewById(R.id.btneliminar);
+       // btnEliminar = (Button) findViewById(R.id.btneliminar);
         http = new AsyncHttpClient();
 
 
@@ -104,42 +104,6 @@ public class ActivityVerVehiculo extends AppCompatActivity {
         handler.postAtTime(runnable, System.currentTimeMillis() + interval);
         handler.postDelayed(runnable, interval);
 
-        // BOTON ELIMINAR
-        btnEliminar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(SelectedRow==false){
-                    Toast.makeText(getApplicationContext(), "Seleccione un Vehiculo para eliminar", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    AlertDialog.Builder builder= new AlertDialog.Builder(getApplicationContext());
-                    builder.setMessage("Desea eliminar el vehiculo");
-                    builder.setTitle("Eliminar");
-
-                    builder.setPositiveButton("SÍ", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-
-                            eliminar();
-                            finish(); // FINALIZAR ACTIVIDAD E IR A INICIO
-                        }
-                    });
-
-                    builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                        }
-                    });
-
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }
-
-            }
-        });
-        // Inflate the layout for this fragment
-        return ;
     }
 
 
@@ -225,43 +189,6 @@ public class ActivityVerVehiculo extends AppCompatActivity {
         }
     }
 
-    // METODO PARA ELIMINAR VEHICULO DE LA BD
-    private void eliminar(){
-        System.out.println("ANTES DE LA CONVERSION "+IdVehiculoBD);
-        String url = "https://sitiosweb2021.000webhostapp.com/Carwash/eliminar.php";
-        JSONObject parametros = new JSONObject();
-        try {
 
-            parametros.put("idvehi",IdVehiculoBD);
-
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
-        JsonObjectRequest requerimiento = new JsonObjectRequest(Request.Method.POST,
-                url, parametros,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            String resu = response.get("resultado").toString();
-                            if (resu.equals("1")) {
-                                Toast.makeText(getApplicationContext(), "SE ELIMINÓ EL VEHICULO", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "No existe el codigo del Vehiculo", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-        rq.add(requerimiento);
-
-    }
 
 }

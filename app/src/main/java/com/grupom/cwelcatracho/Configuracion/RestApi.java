@@ -30,7 +30,7 @@ public class RestApi {
 
     public static final String EndPointValidarLogin = StringHttp + ipaddress + GetLogin;
     public static final String EndPointBuscarCorreo = StringHttp + ipaddress + getBuscarCorreo;
-    public static final String EndPointlistaVehiculos = "https://sitiosweb2021.000webhostapp.com/Carwash/buscar_servicios.php";
+
 
 
 

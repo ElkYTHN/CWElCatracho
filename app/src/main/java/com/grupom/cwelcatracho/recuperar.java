@@ -136,7 +136,7 @@ public class recuperar extends AppCompatActivity {
     public void configurar_envio(){
         //Almacenamos los datos obtenido en sus respectivas variables para el envio del correo
         para = destinatario.getText().toString();
-        asunto = "Recuperacion de contraseña - RUNNING HN";
+        asunto = "Recuperacion de contraseña - ";
         mensaje = "Hola "+nombrecompleto+", \n"+"Su usuario es: "+usuario+"\n"+ "Su contraseña es: "+password;
 
         //creamos las propiedades
@@ -147,7 +147,7 @@ public class recuperar extends AppCompatActivity {
         properties.put("mail.smtp.host", "smtp.gmail.com");//host
         properties.put("mail.smtp.starttls.enable", "true");//Habilitar starttlls de smtp de correo
         properties.put("mail.smtp.port", "25");//puerto
-        properties.put("mail.smtp.user", "RunnighnHondu@gmail.com");//correo de emisor
+        properties.put("mail.smtp.user", "");//correo de emisor
         properties.put("mail.smtp.auth", "true");//Autorizacion de envio
 
         //STARTTLS es una extencion a los protocolos de comunicacion de texto plano,
